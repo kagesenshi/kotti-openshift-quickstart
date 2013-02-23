@@ -3,3 +3,6 @@
 # build hook has been run but before the application has been started back
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
+
+cat $OPENSHIFT_REPO_DIR/wsgi/app.ini|sed "s|DBURL|$OPENSHIFT_MYSQL_DB_URL" > $OPENSHIFT_REPO_DIR/wsgi/app.ini.new
+mv $OPENSHIFT_REPO_DIR/wsgi/app.ini.new $OPENSHIFT_REPO_DIR/wsgi/app.ini
